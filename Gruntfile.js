@@ -4,8 +4,9 @@ module.exports = function(grunt) {
   require('load-grunt-tasks')(grunt);
 
   // Configs
-  grunt.config('releasePath' , './dist/');
-  grunt.config('jsOutput'    , 'main.js');
+  grunt.config('releasePath'    , './dist/');
+  grunt.config('jsOutput'       , 'main.js');
+  grunt.config('jsVendorOutput' , 'vendor.js');
 
   // Load task configs
   grunt.initConfig({
@@ -18,8 +19,9 @@ module.exports = function(grunt) {
 
   // Release
   grunt.registerTask('build', [
-    'clean',
-    'browserify',
+    'clean:release',
+    'browserify:release',
+    'browserify:releaseVendor',
     'copy',
     'jshint'
   ]);
