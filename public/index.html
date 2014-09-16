@@ -15,16 +15,15 @@
     <script src="./main.js"></script>
     <script>
       var data = [
-        { value: 77 },
-        { value: 158 },
-        { value: 92 },
-        { value: 80 },
-        { value: 194 },
-        { value: 142 }
+        { display: 'Item Name', value: 77 },
+        { display: 'Item Name', value: 158 },
+        { display: 'Item Name', value: 92 },
+        { display: 'Item Name', value: 80 },
+        { display: 'Item Name', value: 194 },
+        { display: 'Item Name', value: 142 }
       ];
 
       d3.concentricCircles('.container', data, {
-        colors  : ['#000', '#333', '#666', '#999', '#bbb', '#ddd'],
         onClick : function(e) {
           console.log(e);
         }
