@@ -16,7 +16,9 @@
   ],
   "author": "W2O Digital",
   "dependencies": {
-    "d3": "^3.4.11"
+    "clone": "^0.1.18",
+    "d3": "^3.4.11",
+    "normalize-to-range": "^1.1.13"
   },
   "devDependencies": {
     "browserify": "^5.11.2",

@@ -13,5 +13,22 @@
 
     <script src="./vendor.js"></script>
     <script src="./main.js"></script>
+    <script>
+      var data = [
+        { value: 77 },
+        { value: 158 },
+        { value: 92 },
+        { value: 80 },
+        { value: 194 },
+        { value: 142 }
+      ];
+
+      d3.concentricCircles('.container', data, {
+        colors  : ['#000', '#333', '#666', '#999', '#bbb', '#ddd'],
+        onClick : function(e) {
+          console.log(e);
+        }
+      });
+    </script>
   </body>
 </html>
