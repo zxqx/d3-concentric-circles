@@ -1,63 +1,132 @@
 module.exports = D3ConcentricCircles;
 
-var d3 = require('d3');
+var d3        = require('d3');
+var clone     = require('clone');
+var normalize = require('normalize-to-range');
 
-function D3ConcentricCircles(el)
+d3.concentricCircles = function(el, data, options) {
+  new D3ConcentricCircles(el, data, options);
+};
+
+function D3ConcentricCircles(el, data, options)
 {
+  if (!el)
+    throw new Error('An `el` argument is required');
+  if (!data)
+    throw new Error('A `data` argument is required');
+
+  this.el   = document.querySelector(el);
+  this.data = data;
+
   /**
    * @private
    */
-  this._rendered = false;
+  this._data = clone(data);
 
-  this.el = el;
+  /**
+   * @private
+   */
+  this._options = clone(options);
+
+  /**
+   * Options
+   */
+  this.options = options;
+  options.colors = this.setColors();
 
   this.initialize();
+
+  // Debug
+  window.viz = this;
 }
 
 D3ConcentricCircles.prototype.initialize = function()
 {
+  if (this.el.childNodes.length)
+    throw new Error('`el` should be empty at initialization');
+
+  this.viz = d3.select(this.el).append('svg');
   this.render();
 };
 
 D3ConcentricCircles.prototype.render = function()
 {
-  this._rendered = true;
+  var containerWidth  = this.getContainerWidth();
+  var containerHeight = this.getContainerHeight();
 
-  var svg = d3.select(this.el).append('svg');
-  var container = svg.node().parentNode;
+  this.viz
+    .style('width', containerWidth)
+    .style('height', containerHeight);
 
-  var containerWidth = container.clientWidth;
-  var containerHeight = container.clientHeight;
+  // Debug
+  this.data = getRandomValues();
+  this.data.sort(function(a, b) {
+    return b.value - a.value;
+  });
+  this._data = clone(this.data);
 
-  svg.style('width', containerWidth);
-  svg.style('height', containerHeight);
+  // Normalize to ensure viz isn't taller than container
+  this.data = normalize(this.data, 0, containerHeight / 2, 'value');
 
-  var bbox = svg[0][0].getBoundingClientRect();
+  var group  = this.createGroup();
+  var colors = this.options.colors;
 
-  var numItems = Math.floor(Math.random()*10) + 1;
-  var generateValue = d3.random.normal(125, 40);
-  var values = [];
-  for (var i = 0; i < numItems; i++) {
-    values.push(Math.abs(generateValue()));
-  }
-  values.sort(d3.descending);
-  var maxr = d3.max(values);
+  this.createCircles(group, colors);
+};
 
-  var target = svg.append('g')
-    .attr('transform', 'translate(' + (bbox.width / 2) + ',' + (bbox.height / 2) + ')');
+D3ConcentricCircles.prototype.setColors = function()
+{
+  if (this.options.colors)
+    return d3.scale.ordinal().range(this.options.colors);
+  else
+    return d3.scale.category20();
+};
 
-  var color = d3.scale.category20();
-  target.selectAll('circle')
+D3ConcentricCircles.prototype.getContainerWidth = function()
+{
+  return this.el.clientWidth;
+};
+
+D3ConcentricCircles.prototype.getContainerHeight = function()
+{
+  return this.el.clientHeight;
+};
+
+D3ConcentricCircles.prototype.createGroup = function()
+{
+  return this.viz.append('g')
+    .attr('transform',
+      'translate(' +
+        (this.getContainerWidth() / 2) + ',' +
+        (this.getContainerHeight() / 2) +
+      ')');
+};
+
+D3ConcentricCircles.prototype.createCircles = function(group, colors)
+{
+  var values = this.data.map(function(x) {
+    return x.value;
+  });
+
+  var _this = this;
+  group.selectAll('circle')
     .data(values)
     .enter().append('circle')
-    .attr('r', function(d) {return d;})
-    .attr('fill', function(d, i) { return color(i); });
+    .on('click', function(val, index) {
+      _this.options.onClick(_this._data[index]);
+    })
+    .attr('r', function(d) { return d; })
+    .attr('fill', function(d, i) { return colors(i); });
 };
 
-// Roll as D3 pluggy
-d3.concentricCircles = function(el) {
-  new D3ConcentricCircles(el);
-};
+function getRandomValues()
+{
+  var generateValue = d3.random.normal(125, 40);
 
-// Implementation
-d3.concentricCircles('.container');
+  var data = [];
+  for (var i = 0; i < 6; i++) {
+    data.push({ value: Math.abs(generateValue()) });
+  }
+
+  return data;
+}

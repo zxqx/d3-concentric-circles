@@ -10,7 +10,7 @@ module.exports = function(grunt) {
 
   var pkg           = grunt.file.readJSON('package.json');
   var appEntryPoint = pkg.main;
-  var vendorLibs    = Object.keys(pkg.dependencies);
+  var vendorLibs    = ['d3'];
 
   return {
     release: {
