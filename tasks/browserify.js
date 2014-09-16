@@ -11,6 +11,7 @@ module.exports = function(grunt) {
   var pkg           = grunt.file.readJSON('package.json');
   var appEntryPoint = pkg.main;
   var vendorLibs    = ['d3'];
+  var transform     = ['hbsfy'];
 
   return {
     release: {
@@ -18,7 +19,8 @@ module.exports = function(grunt) {
       dest: jsReleasePath,
       options: {
         browserifyOptions: { debug: true },
-        external: vendorLibs
+        external: vendorLibs,
+        transform: transform
       }
     },
     releaseVendor: {
