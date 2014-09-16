@@ -8,6 +8,8 @@ d3.concentricCircles = function(el, data, options) {
   new D3ConcentricCircles(el, data, options);
 };
 
+D3ConcentricCircles.TEMPLATE = require('./legend.hbs');
+
 function D3ConcentricCircles(el, data, options)
 {
   if (!el)
@@ -37,13 +39,15 @@ function D3ConcentricCircles(el, data, options)
   this.initialize();
 
   // Debug
-  window.viz = this;
+  //window.viz = this;
 }
 
 D3ConcentricCircles.prototype.initialize = function()
 {
   if (this.el.childNodes.length)
     throw new Error('`el` should be empty at initialization');
+
+  this.el.style.position = 'relative';
 
   this.viz = d3.select(this.el).append('svg');
   this.render();
@@ -59,7 +63,8 @@ D3ConcentricCircles.prototype.render = function()
     .style('height', containerHeight);
 
   // Debug
-  this.data = getRandomValues();
+  //this.data = getRandomValues();
+
   this.data.sort(function(a, b) {
     return b.value - a.value;
   });
@@ -68,10 +73,24 @@ D3ConcentricCircles.prototype.render = function()
   // Normalize to ensure viz isn't taller than container
   this.data = normalize(this.data, 0, containerHeight / 2, 'value');
 
+  // Remove group before creating new one
+  d3.select(this.el).select('svg g').remove();
+
   var group  = this.createGroup();
   var colors = this.options.colors;
 
   this.createCircles(group, colors);
+  this.createLegend();
+};
+
+D3ConcentricCircles.prototype.createLegend = function()
+{
+  var legend = D3ConcentricCircles.TEMPLATE(this);
+  var legendContainer = document.createElement('div');
+  legendContainer.classList.add('d3-concentric-circles-legend');
+  legendContainer.innerHTML = legend;
+
+  this.el.appendChild(legendContainer);
 };
 
 D3ConcentricCircles.prototype.setColors = function()
@@ -112,11 +131,15 @@ D3ConcentricCircles.prototype.createCircles = function(group, colors)
   group.selectAll('circle')
     .data(values)
     .enter().append('circle')
-    .on('click', function(val, index) {
-      _this.options.onClick(_this._data[index]);
+    .on('click', function(d, i) {
+      _this.options.onClick(_this._data[i]);
     })
     .attr('r', function(d) { return d; })
-    .attr('fill', function(d, i) { return colors(i); });
+    .attr('fill', function(d, i) {
+      var color = colors(i);
+      _this._data[i].color = color;
+      return color;
+    });
 };
 
 function getRandomValues()
@@ -125,7 +148,7 @@ function getRandomValues()
 
   var data = [];
   for (var i = 0; i < 6; i++) {
-    data.push({ value: Math.abs(generateValue()) });
+    data.push({ display: 'Item Name', value: Math.abs(generateValue()) });
   }
 
   return data;
