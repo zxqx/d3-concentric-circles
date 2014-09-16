@@ -24,6 +24,9 @@
       ];
 
       d3.concentricCircles('.container', data, {
+        valueField: 'value',
+        labelField: 'display',
+        //colors: ['#f00', '#0f0', '#00f', '#fff', '#000'],
         onClick : function(e) {
           console.log(e);
         }
