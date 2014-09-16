@@ -9,6 +9,7 @@ d3.concentricCircles = function(el, data, options) {
 };
 
 D3ConcentricCircles.TEMPLATE = require('./legend.hbs');
+D3ConcentricCircles.DEFAULT_COLORS = ['#485566', '#259eae', '#cdfc43', '#576e4a', '#8cd34b'];
 
 function D3ConcentricCircles(el, data, options)
 {
@@ -63,7 +64,7 @@ D3ConcentricCircles.prototype.render = function()
     .style('height', containerHeight);
 
   // Debug
-  //this.data = getRandomValues();
+  this.data = getRandomValues();
 
   this.data.sort(function(a, b) {
     return b.value - a.value;
@@ -95,10 +96,7 @@ D3ConcentricCircles.prototype.createLegend = function()
 
 D3ConcentricCircles.prototype.setColors = function()
 {
-  if (this.options.colors)
-    return d3.scale.ordinal().range(this.options.colors);
-  else
-    return d3.scale.category20();
+  return d3.scale.ordinal().range(this.options.colors || D3ConcentricCircles.DEFAULT_COLORS);
 };
 
 D3ConcentricCircles.prototype.getContainerWidth = function()
@@ -147,7 +145,7 @@ function getRandomValues()
   var generateValue = d3.random.normal(125, 40);
 
   var data = [];
-  for (var i = 0; i < 6; i++) {
+  for (var i = 0; i < 5; i++) {
     data.push({ display: 'Item Name', value: Math.abs(generateValue()) });
   }
 
