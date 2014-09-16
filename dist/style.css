@@ -1,17 +1,17 @@
 .container {
-  margin-top : 60px;
-  height     : 400px;
-  font-family: 'Open Sans', serif;
+  margin-top  : 60px;
+  height      : 400px;
+  font-family : 'Open Sans', serif;
 }
 
 .d3-concentric-circles-legend {
-  position : absolute;
-  top      : 0;
-  right    : 10px;
-  padding  : 10px 60px 10px 10px;
-  border   : 1px solid #ccc;
-  background: #fff;
-  box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+  position   : absolute;
+  top        : 0;
+  right      : 10px;
+  padding    : 10px 60px 10px 10px;
+  border     : 1px solid #ccc;
+  background : #fff;
+  box-shadow : 0 0 4px rgba(0, 0, 0, 0.2);
 }
 
 .d3-concentric-circles-legend ul {
@@ -21,18 +21,18 @@
 }
 
 .d3-concentric-circles-legend li {
-  padding    : 5px;
-  float      : left;
-  clear      : both;
-  font-size  : 16px;
-  line-height: 21px;
-  list-style : none;
+  padding     : 5px;
+  float       : left;
+  clear       : both;
+  font-size   : 16px;
+  line-height : 21px;
+  list-style  : none;
 }
 
 .d3-concentric-circles-legend-color {
-  margin-right  : 10px;
-  width         : 20px;
-  height        : 20px;
+  margin        : 3px 10px 0 0;
+  width         : 15px;
+  height        : 15px;
   display       : block;
   float         : left;
   border-radius : 100%;

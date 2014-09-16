@@ -18,13 +18,20 @@ function D3ConcentricCircles(el, data, options)
   if (!data)
     throw new Error('A `data` argument is required');
 
-  this.el   = document.querySelector(el);
+  this.el = document.querySelector(el);
+
+  //data = getRandomValues();
+
+  data.sort(function(a, b) {
+    return b.value - a.value;
+  });
+
   this.data = data;
 
   /**
    * @private
    */
-  this._data = clone(data);
+  this._data = clone(this.data);
 
   /**
    * @private
@@ -50,6 +57,12 @@ D3ConcentricCircles.prototype.initialize = function()
 
   this.el.style.position = 'relative';
 
+  var _this = this;
+  this._data.map(function(x) {
+    x.display = x[_this.options.labelField];
+    x.value   = x[_this.options.valueField];
+  });
+
   this.viz = d3.select(this.el).append('svg');
   this.render();
 };
@@ -62,14 +75,6 @@ D3ConcentricCircles.prototype.render = function()
   this.viz
     .style('width', containerWidth)
     .style('height', containerHeight);
-
-  // Debug
-  this.data = getRandomValues();
-
-  this.data.sort(function(a, b) {
-    return b.value - a.value;
-  });
-  this._data = clone(this.data);
 
   // Normalize to ensure viz isn't taller than container
   this.data = normalize(this.data, 0, containerHeight / 2, 'value');
