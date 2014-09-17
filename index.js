@@ -51,7 +51,6 @@ function D3ConcentricCircles(selector, data, options)
    * Merge defaults with runtime options
    */
   this.options = extend(this.DEFAULT_OPTIONS, options);
-  this.options.colors = this.setColors();
 
   this.initialize();
 }
@@ -102,10 +101,9 @@ D3ConcentricCircles.prototype.render = function()
   // Remove group before creating new one
   d3.select(this.el).select('svg g').remove();
 
-  var group  = this.createGroup();
-  var colors = this.options.colors;
+  var group = this.createGroup();
 
-  this.createCircles(group, colors);
+  this.createCircles(group);
   this.createLegend();
 };
 
@@ -119,11 +117,6 @@ D3ConcentricCircles.prototype.createLegend = function()
   legendContainer.innerHTML = legend;
 
   this.el.appendChild(legendContainer);
-};
-
-D3ConcentricCircles.prototype.setColors = function()
-{
-  return d3.scale.ordinal().range(this.options.colors);
 };
 
 D3ConcentricCircles.prototype.getContainerWidth = function()
@@ -146,11 +139,13 @@ D3ConcentricCircles.prototype.createGroup = function()
       ')');
 };
 
-D3ConcentricCircles.prototype.createCircles = function(group, colors)
+D3ConcentricCircles.prototype.createCircles = function(group)
 {
   var values = this.data.map(function(x) {
     return x.value;
   });
+
+  var colorOptions = d3.scale.ordinal().range(this.options.colors);
 
   var _this = this;
   group.selectAll('circle')
@@ -162,7 +157,7 @@ D3ConcentricCircles.prototype.createCircles = function(group, colors)
     })
     .attr('r', function(d) { return d; })
     .attr('fill', function(d, i) {
-      var color = colors(i);
+      var color = colorOptions(i);
       _this._data[i].color = color;
       return color;
     });
