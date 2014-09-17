@@ -1,14 +1,18 @@
 module.exports = function(grunt) {
-  var releasePath = grunt.config.get('releasePath');
-
   var webRootSourcePath = './public';
 
   return {
-    release: {
+    public: {
       expand: true,
       cwd: webRootSourcePath,
       src: '**',
-      dest: releasePath
+      dest: './example/'
+    },
+    style: {
+      expand: true,
+      cwd: './style',
+      src: '**',
+      dest: './dist/'
     }
   };
 };

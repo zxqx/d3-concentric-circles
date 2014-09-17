@@ -5,7 +5,7 @@ module.exports = function(grunt) {
 
   // Configs
   grunt.config('releasePath'    , './dist/');
-  grunt.config('jsOutput'       , 'main.js');
+  grunt.config('jsOutput'       , 'd3-concentric-circles.js');
   grunt.config('jsVendorOutput' , 'vendor.js');
 
   // Load task configs
@@ -18,8 +18,13 @@ module.exports = function(grunt) {
   });
 
   // Release
-  grunt.registerTask('build', [
-    'clean:release',
+  grunt.registerTask('build:standalone', [
+    'browserify:release',
+    'jshint'
+  ]);
+
+  grunt.registerTask('build:example', [
+    'clean',
     'browserify:release',
     'browserify:releaseVendor',
     'copy',
