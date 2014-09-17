@@ -41,12 +41,12 @@ test('options', function(t) {
 
   var data = [
     { label: 'Label', value: 100 },
-    { label: 'Label 2', value: 132 },
+    { label: 'Label 2', value: 132 }
   ];
 
   var options = {
-    valueField : 'lkdghsdlkh',
-    labelField : 'mattsface',
+    valueField : 'value',
+    labelField : 'label',
     colors     : ['#fff', '#ccc', '#000'],
     legend     : false,
     onClick    : function(e) {
