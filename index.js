@@ -1,7 +1,6 @@
 module.exports = D3ConcentricCircles;
 
 var d3             = require('d3');
-var clone          = require('clone');
 var extend         = require('extend');
 var normalize      = require('normalize-to-range');
 var ConcentricData = require('./lib/ConcentricData.js');
