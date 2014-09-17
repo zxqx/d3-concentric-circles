@@ -29,6 +29,8 @@ require('d3-concentric-circles');
 d3.concentricCircles('.container', data, {
   valueField : 'value',
   labelField : 'display',
+  colors     : ['#08534c', '#28825f', '#fc8f32', '#dc4f00', '#f60202'],
+  legend     : true;
   onClick    : function(e) {
     console.log(e);
   }
@@ -45,6 +47,8 @@ define(function(require) {
   d3.concentricCircles('.container', data, {
     valueField : 'value',
     labelField : 'display',
+    colors     : ['#08534c', '#28825f', '#fc8f32', '#dc4f00', '#f60202'],
+    legend     : true;
     onClick    : function(e) {
       console.log(e);
     }

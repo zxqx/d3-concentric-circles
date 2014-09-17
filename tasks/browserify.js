@@ -18,9 +18,12 @@ module.exports = function(grunt) {
       src: appEntryPoint,
       dest: jsReleasePath,
       options: {
-        browserifyOptions: { debug: true },
+        browserifyOptions: {
+          debug: true,
+          standalone: 'd3-concentric-circles'
+        },
         external: vendorLibs,
-        transform: transform
+        transform: transform,
       }
     },
     releaseVendor: {
