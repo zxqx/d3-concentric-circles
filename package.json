@@ -4,7 +4,8 @@
   "description": "A concentric circles visualization using the D3 library.",
   "main": "index.js",
   "scripts": {
-    "build": "grunt build",
+    "build": "grunt build:standalone",
+    "example": "grunt build:example",
     "test": "tape ./test/**/*.js",
     "watch": "grunt watch"
   },

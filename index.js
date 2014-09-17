@@ -21,15 +21,13 @@ function D3ConcentricCircles(el, data, options)
 
   this.DEFAULT_OPTIONS = {
     valueField : 'value',
-    labelField : 'display',
+    labelField : 'label',
     colors     : ['#08534c', '#28825f', '#fc8f32', '#dc4f00', '#f60202'],
     legend     : true,
     onClick    : null,
   };
 
   this.el = el;
-
-  //data = getRandomValues();
 
   this.data = clone(data);
 
@@ -170,15 +168,3 @@ D3ConcentricCircles.prototype.createCircles = function(group, colors)
       return color;
     });
 };
-
-function getRandomValues()
-{
-  var generateValue = d3.random.normal(125, 40);
-
-  var data = [];
-  for (var i = 0; i < 5; i++) {
-    data.push({ display: 'Item Name', value: Math.abs(generateValue()) });
-  }
-
-  return data;
-}
