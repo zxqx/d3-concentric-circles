@@ -37,7 +37,7 @@ test('basics', function(t) {
 });
 
 test('options', function(t) {
-  t.plan(2);
+  t.plan(1);
 
   var data = [
     { label: 'Label', value: 100 },
@@ -62,17 +62,6 @@ test('options', function(t) {
 
   t.deepEquals(options, cc.options,
     'should merge runtime options with defaults');
-
-  document.body.removeChild(container);
-
-  container = document.createElement('div');
-  container.classList.add('container');
-  document.body.appendChild(container);
-
-  cc = d3.concentricCircles('.container', data, {});
-
-  t.deepEquals(cc.options, cc.DEFAULT_OPTIONS,
-    'should use defaults if no options specified');
 
   document.body.removeChild(container);
 });
