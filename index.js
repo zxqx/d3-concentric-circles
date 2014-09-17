@@ -2,14 +2,15 @@ module.exports = D3ConcentricCircles;
 
 var d3        = require('d3');
 var clone     = require('clone');
+var extend    = require('extend');
 var normalize = require('normalize-to-range');
 
-d3.concentricCircles = function(el, data, options) {
-  new D3ConcentricCircles(el, data, options);
+d3.concentricCircles = function(selector, data, options) {
+  var el = document.querySelector(selector);
+  return new D3ConcentricCircles(el, data, options);
 };
 
-D3ConcentricCircles.TEMPLATE = require('./legend.hbs');
-D3ConcentricCircles.DEFAULT_COLORS = ['#08534c', '#28825f', '#fc8f32', '#dc4f00', '#f60202'];
+var TEMPLATE = require('./legend.hbs');
 
 function D3ConcentricCircles(el, data, options)
 {
@@ -18,47 +19,72 @@ function D3ConcentricCircles(el, data, options)
   if (!data)
     throw new Error('A `data` argument is required');
 
-  this.el = document.querySelector(el);
+  this.DEFAULT_OPTIONS = {
+    valueField : 'value',
+    labelField : 'display',
+    colors     : ['#08534c', '#28825f', '#fc8f32', '#dc4f00', '#f60202'],
+    legend     : true,
+    onClick    : null,
+  };
+
+  this.el = el;
 
   //data = getRandomValues();
 
-  data.sort(function(a, b) {
-    return b.value - a.value;
-  });
-
-  this.data = data;
+  this.data = clone(data);
 
   /**
+   * @private
+   */
+  this._initialized = false;
+
+  /**
+   * Preserve original data hash
    * @private
    */
   this._data = clone(this.data);
 
   /**
+   * Preserve original options hash
    * @private
    */
   this._options = clone(options);
 
   /**
-   * Options
+   * Merge defaults with runtime options
    */
-  this.options = options;
-  options.colors = this.setColors();
+  this.options = extend(this.DEFAULT_OPTIONS, options);
+  this.options.colors = this.setColors();
 
   this.initialize();
 }
 
 D3ConcentricCircles.prototype.initialize = function()
 {
+  if (this._initialized) return;
+
   if (this.el.childNodes.length)
     throw new Error('`el` should be empty at initialization');
+
+  this._initialized = true;
 
   this.el.style.position = 'relative';
 
   var _this = this;
-  this._data.map(function(x) {
+  this._data.forEach(function(x) {
     x.display = x[_this.options.labelField];
     x.value   = x[_this.options.valueField];
   });
+
+  var sum = 0;
+  this.data.forEach(function(x) {
+    sum += x.value;
+    x.value = sum;
+  });
+
+  // Reverse for rendering
+  this.data.reverse();
+  this._data.reverse();
 
   this.viz = d3.select(this.el).append('svg');
   this.render();
@@ -88,7 +114,9 @@ D3ConcentricCircles.prototype.render = function()
 
 D3ConcentricCircles.prototype.createLegend = function()
 {
-  var legend = D3ConcentricCircles.TEMPLATE(this);
+  if (!this.options.legend) return;
+
+  var legend = TEMPLATE(this);
   var legendContainer = document.createElement('div');
   legendContainer.classList.add('d3-concentric-circles-legend');
   legendContainer.innerHTML = legend;
@@ -98,7 +126,7 @@ D3ConcentricCircles.prototype.createLegend = function()
 
 D3ConcentricCircles.prototype.setColors = function()
 {
-  return d3.scale.ordinal().range(this.options.colors || D3ConcentricCircles.DEFAULT_COLORS);
+  return d3.scale.ordinal().range(this.options.colors);
 };
 
 D3ConcentricCircles.prototype.getContainerWidth = function()
@@ -132,7 +160,8 @@ D3ConcentricCircles.prototype.createCircles = function(group, colors)
     .data(values)
     .enter().append('circle')
     .on('click', function(d, i) {
-      _this.options.onClick(_this._data[i]);
+      if (_this.options.onClick)
+        _this.options.onClick(_this._data[i]);
     })
     .attr('r', function(d) { return d; })
     .attr('fill', function(d, i) {
