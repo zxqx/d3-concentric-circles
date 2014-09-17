@@ -62,21 +62,3 @@ test('options', function(t) {
 
   document.body.removeChild(container);
 });
-
-test('dom', function(t) {
-  t.plan(1);
-
-  var data = [
-    { label: 'Label', value: 100 },
-    { label: 'Label 2', value: 132 }
-  ];
-
-  var container = document.createElement('div');
-  container.classList.add('container');
-  document.body.appendChild(container);
-
-  var cc = d3.concentricCircles('.container', data);
-  var svg = document.querySelector('.container svg');
-
-  t.ok(svg, 'should create svg element');
-});
