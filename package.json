@@ -6,7 +6,7 @@
   "scripts": {
     "build": "grunt build:standalone",
     "example": "grunt build:example",
-    "test": "tape ./test/**/*.js",
+    "test": "browserify -t hbsfy test/*.js | testling",
     "watch": "grunt watch"
   },
   "keywords": [
@@ -34,6 +34,8 @@
     "grunt-contrib-watch": "^0.6.1",
     "hbsfy": "^2.1.0",
     "load-grunt-tasks": "^0.6.0",
-    "tape": "^2.14.0"
+    "phantomjs": "^1.9.8",
+    "tape": "^3.0.0",
+    "testling": "^1.7.0"
   }
 }

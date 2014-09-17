@@ -90,3 +90,9 @@ d3.concentricCircles('.container', data, {
 ### viz.render()
 Re-render the visualization; useful if bound data or container size has changed.
 
+## Test
+Run tests via tape:
+
+```
+$ npm run test
+```
