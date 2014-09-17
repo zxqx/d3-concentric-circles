@@ -41,11 +41,11 @@ function D3ConcentricCircles(selector, data, options)
    */
   this._initialized = false;
 
+  // Merge defaults with runtime options
+  options = this.options = extend(DEFAULT_OPTIONS, options);
+
   this.el    = document.querySelector(selector);
   this.model = new ConcentricData(data, options);
-
-  // Merge defaults with runtime options
-  this.options = extend(DEFAULT_OPTIONS, options);
 
   this.initialize();
 }
