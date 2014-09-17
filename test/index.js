@@ -37,13 +37,13 @@ test('options', function(t) {
   t.plan(1);
 
   var data = [
-    { label: 'Label', value: 100 },
-    { label: 'Label 2', value: 132 }
+    { lab: 'Label', val: 100 },
+    { lab: 'Label 2', val: 132 }
   ];
 
   var options = {
-    valueField : 'value',
-    labelField : 'label',
+    valueField : 'val',
+    labelField : 'lab',
     colors     : ['#fff', '#ccc', '#000'],
     legend     : false,
     onClick    : function(e) {
@@ -68,7 +68,7 @@ test('dom', function(t) {
 
   var data = [
     { label: 'Label', value: 100 },
-    { label: 'Label 2', value: 132 },
+    { label: 'Label 2', value: 132 }
   ];
 
   var container = document.createElement('div');
