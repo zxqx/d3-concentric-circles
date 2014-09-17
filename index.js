@@ -10,7 +10,7 @@ var ConcentricCircles = require('./lib/ConcentricCircles.js');
  * @return {ConcentricCircles}
  */
 d3.concentricCircles = function(selector, data, options) {
-  var viz = new ConcentricCircles(selector, options);
+  var viz   = new ConcentricCircles(selector, options);
   var model = new ConcentricData(data, viz.options);
   viz.model = model;
 
