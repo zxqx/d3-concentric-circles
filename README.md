@@ -53,6 +53,12 @@ define(function(require) {
 });
 ```
 
+Add CSS stylesheet located at `style/d3-concentric-circles.css`:
+
+```html
+<link href="path/to/your/stylesheets/d3-concentric-circles.css" rel="stylesheet">
+```
+
 ## Options
 
 Pass an optional `options` hash to override plugin defaults:
