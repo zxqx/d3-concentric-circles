@@ -13,7 +13,7 @@ d3.concentricCircles = function(selector, data, options) {
   return new D3ConcentricCircles(selector, data, options);
 };
 
-var TEMPLATE = require('./legend.hbs');
+var TEMPLATE = require('./lib/legend.hbs');
 
 var DEFAULT_OPTIONS = {
   valueField : 'value',
