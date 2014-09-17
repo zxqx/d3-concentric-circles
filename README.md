@@ -90,6 +90,16 @@ d3.concentricCircles('.container', data, {
 ### viz.render()
 Re-render the visualization; useful if bound data or container size has changed.
 
+```js
+var viz = d3.concentricCircles('.container', data);
+
+// several moments later...
+
+viz.render();
+
+// viz re-rendered
+```
+
 ## Test
 Run tests via tape:
 
