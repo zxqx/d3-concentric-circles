@@ -9,7 +9,7 @@ d3.concentricCircles = function(el, data, options) {
 };
 
 D3ConcentricCircles.TEMPLATE = require('./legend.hbs');
-D3ConcentricCircles.DEFAULT_COLORS = ['#485566', '#259eae', '#cdfc43', '#576e4a', '#8cd34b'];
+D3ConcentricCircles.DEFAULT_COLORS = ['#08534c', '#28825f', '#fc8f32', '#dc4f00', '#f60202'];
 
 function D3ConcentricCircles(el, data, options)
 {
@@ -45,9 +45,6 @@ function D3ConcentricCircles(el, data, options)
   options.colors = this.setColors();
 
   this.initialize();
-
-  // Debug
-  //window.viz = this;
 }
 
 D3ConcentricCircles.prototype.initialize = function()
