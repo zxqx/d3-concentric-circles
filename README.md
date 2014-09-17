@@ -1,6 +1,6 @@
 # D3 Concentric Circles
 
-A concentric circles visualization using the D3 library.
+A concentric circles visualization plugin using the D3 library.
 
 ## Installation
 
