@@ -33,6 +33,7 @@
     "grunt-contrib-jshint": "^0.10.0",
     "grunt-contrib-watch": "^0.6.1",
     "hbsfy": "^2.1.0",
+    "is-function": "^1.0.1",
     "load-grunt-tasks": "^0.6.0",
     "phantomjs": "^1.9.8",
     "tape": "^3.0.0",
