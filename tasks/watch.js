@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
   return {
     js: {
-      files: ['index.js', './lib/*.js', 'legend.hbs'],
+      files: ['index.js', './lib/*'],
       tasks: ['jshint', 'browserify:release']
     },
     static: {
