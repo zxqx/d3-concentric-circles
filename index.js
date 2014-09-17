@@ -1,9 +1,10 @@
 module.exports = D3ConcentricCircles;
 
-var d3        = require('d3');
-var clone     = require('clone');
-var extend    = require('extend');
-var normalize = require('normalize-to-range');
+var d3             = require('d3');
+var clone          = require('clone');
+var extend         = require('extend');
+var normalize      = require('normalize-to-range');
+var ConcentricData = require('./lib/ConcentricData.js');
 
 /**
  * Use as D3 method
@@ -35,19 +36,13 @@ function D3ConcentricCircles(selector, data, options)
   if (!data)
     throw new Error('A `data` argument is required');
 
-  this.el   = document.querySelector(selector);
-  this.data = clone(data);
-
   /**
    * @private
    */
   this._initialized = false;
 
-  /**
-   * Preserve original data hash
-   * @private
-   */
-  this._data = clone(this.data);
+  this.el    = document.querySelector(selector);
+  this.model = new ConcentricData(data, options);
 
   // Merge defaults with runtime options
   this.options = extend(DEFAULT_OPTIONS, options);
@@ -70,13 +65,6 @@ D3ConcentricCircles.prototype.initialize = function()
   // Allows absolute legend positioning relative to container
   this.el.style.position = 'relative';
 
-  this.setLabelAndValueFields();
-  this.stackDataValues();
-
-  // Iterate through data in reverse to make rendering simpler
-  this.data.reverse();
-  this._data.reverse();
-
   // Set up `svg` container
   this.viz = d3.select(this.el).append('svg');
 
@@ -97,8 +85,7 @@ D3ConcentricCircles.prototype.render = function()
     .style('width', containerWidth)
     .style('height', containerHeight);
 
-  // Normalize data values to ensure viz isn't taller than container
-  this.data = normalize(this.data, 0, containerHeight / 2, 'value');
+  this.normalizeDataForRendering();
 
   // Remove group before creating new one
   d3.select(this.el).select('svg g').remove();
@@ -109,29 +96,12 @@ D3ConcentricCircles.prototype.render = function()
 };
 
 /**
- * Sum each data value with the sum of all previous data values
- * @return {array}
+ * Normalize data values to ensure viz isn't taller than container
  */
-D3ConcentricCircles.prototype.stackDataValues = function()
+D3ConcentricCircles.prototype.normalizeDataForRendering = function()
 {
-  var sum = 0;
-  return this.data.forEach(function(x) {
-    sum += x.value;
-    x.value = sum;
-  });
-};
-
-/**
- * Use `labelField` and `valueField` options to set labels and values fields respectively
- * @return {array}
- */
-D3ConcentricCircles.prototype.setLabelAndValueFields = function()
-{
-  var _this = this;
-  return this._data.forEach(function(x) {
-    x.label = x[_this.options.labelField];
-    x.value = x[_this.options.valueField];
-  });
+  var containerHeight = this.getContainerHeight();
+  this.model.data = normalize(this.model.data, 0, containerHeight / 2, 'value');
 };
 
 /**
@@ -155,7 +125,7 @@ D3ConcentricCircles.prototype.createGroup = function()
 D3ConcentricCircles.prototype.createCircles = function(group)
 {
   // Map standalone values to array
-  var values = this.data.map(function(x) {
+  var values = this.model.data.map(function(x) {
     return x.value;
   });
 
@@ -166,12 +136,12 @@ D3ConcentricCircles.prototype.createCircles = function(group)
     .enter().append('circle')
     .on('click', function(d, i) {
       if (_this.options.onClick)
-        _this.options.onClick(_this._data[i]);
+        _this.options.onClick(_this.model.originalData[i]);
     })
     .attr('r', function(d) { return d; })
     .attr('fill', function(d, i) {
       var color = _this.options.colors[i];
-      _this._data[i].color = color;
+      _this.model.data[i].color = color;
       return color;
     });
 };
