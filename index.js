@@ -5,11 +5,22 @@ var clone     = require('clone');
 var extend    = require('extend');
 var normalize = require('normalize-to-range');
 
+/**
+ * Use as D3 method
+ */
 d3.concentricCircles = function(selector, data, options) {
   return new D3ConcentricCircles(selector, data, options);
 };
 
 var TEMPLATE = require('./legend.hbs');
+
+var DEFAULT_OPTIONS = {
+  valueField : 'value',
+  labelField : 'label',
+  colors     : ['#08534c', '#28825f', '#fc8f32', '#dc4f00', '#f60202'],
+  legend     : true,
+  onClick    : null,
+};
 
 /**
  * Concentric circles visualization
@@ -23,17 +34,6 @@ function D3ConcentricCircles(selector, data, options)
     throw new Error('A `selector` argument is required');
   if (!data)
     throw new Error('A `data` argument is required');
-
-  /**
-   * Sane defaults
-   */
-  this.DEFAULT_OPTIONS = {
-    valueField : 'value',
-    labelField : 'label',
-    colors     : ['#08534c', '#28825f', '#fc8f32', '#dc4f00', '#f60202'],
-    legend     : true,
-    onClick    : null,
-  };
 
   this.el   = document.querySelector(selector);
   this.data = clone(data);
@@ -49,14 +49,8 @@ function D3ConcentricCircles(selector, data, options)
    */
   this._data = clone(this.data);
 
-  /**
-   * Preserve original options hash
-   * @private
-   */
-  this._options = clone(options);
-
   // Merge defaults with runtime options
-  this.options = extend(this.DEFAULT_OPTIONS, options);
+  this.options = extend(DEFAULT_OPTIONS, options);
 
   this.initialize();
 }
@@ -83,7 +77,10 @@ D3ConcentricCircles.prototype.initialize = function()
   this.data.reverse();
   this._data.reverse();
 
+  // Set up `svg` container
   this.viz = d3.select(this.el).append('svg');
+
+  // Make the magic happen
   this.render();
 };
 
@@ -100,7 +97,7 @@ D3ConcentricCircles.prototype.render = function()
     .style('width', containerWidth)
     .style('height', containerHeight);
 
-  // Normalize to ensure viz isn't taller than container
+  // Normalize data values to ensure viz isn't taller than container
   this.data = normalize(this.data, 0, containerHeight / 2, 'value');
 
   // Remove group before creating new one
@@ -211,4 +208,3 @@ D3ConcentricCircles.prototype.getContainerHeight = function()
 {
   return this.el.clientHeight;
 };
-
