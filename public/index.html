@@ -22,14 +22,13 @@
         { display: 'Item Name', value: 194 }
       ];
 
-      d3.concentricCircles('.container', data, {
+      var cc = d3.concentricCircles('.container', data, {
         valueField : 'value',
         labelField : 'display',
         onClick    : function(e) {
           console.log(e);
         }
       });
-
     </script>
   </body>
 </html>
