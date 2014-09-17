@@ -6,16 +6,15 @@ var extend    = require('extend');
 var normalize = require('normalize-to-range');
 
 d3.concentricCircles = function(selector, data, options) {
-  var el = document.querySelector(selector);
-  return new D3ConcentricCircles(el, data, options);
+  return new D3ConcentricCircles(selector, data, options);
 };
 
 var TEMPLATE = require('./legend.hbs');
 
-function D3ConcentricCircles(el, data, options)
+function D3ConcentricCircles(selector, data, options)
 {
-  if (!el)
-    throw new Error('An `el` argument is required');
+  if (!selector)
+    throw new Error('A `selector` argument is required');
   if (!data)
     throw new Error('A `data` argument is required');
 
@@ -27,7 +26,7 @@ function D3ConcentricCircles(el, data, options)
     onClick    : null,
   };
 
-  this.el = el;
+  this.el = document.querySelector(selector);
 
   this.data = clone(data);
 
