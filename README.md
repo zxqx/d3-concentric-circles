@@ -94,5 +94,5 @@ Re-render the visualization; useful if bound data or container size has changed.
 Run tests via tape:
 
 ```
-$ npm run test
+$ npm test
 ```
