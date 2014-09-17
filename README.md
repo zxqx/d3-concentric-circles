@@ -4,7 +4,7 @@ A concentric circles visualization using the D3 library.
 
 ## Installation
 
-via npm:
+via npm (soon):
 
 ```
 $ npm install d3-concentric-circles
