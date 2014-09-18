@@ -18,24 +18,6 @@
   <body>
     <div class="container"></div>
 
-    <script src="../dist/vendor.js"></script>
-    <script src="../dist/d3-concentric-circles.js"></script>
-    <script>
-      var data = [
-        { display: 'Item Name', value: 77 },
-        { display: 'Item Name', value: 158 },
-        { display: 'Item Name', value: 92 },
-        { display: 'Item Name', value: 80 },
-        { display: 'Item Name', value: 194 }
-      ];
-
-      var cc = d3.concentricCircles('.container', data, {
-        valueField : 'value',
-        labelField : 'display',
-        onClick    : function(e) {
-          console.log(e);
-        }
-      });
-    </script>
+    <script src="main.js"></script>
   </body>
 </html>

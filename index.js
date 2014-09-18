@@ -1,4 +1,5 @@
-var d3                = require('d3');
+module.exports = d3ConcentricCircles;
+
 var ConcentricData    = require('./lib/ConcentricData.js');
 var ConcentricCircles = require('./lib/ConcentricCircles.js');
 
@@ -9,13 +10,11 @@ var ConcentricCircles = require('./lib/ConcentricCircles.js');
  * @param {object=} options
  * @return {ConcentricCircles}
  */
-d3.concentricCircles = function(selector, data, options) {
+function d3ConcentricCircles(selector, data, options) {
   var viz   = new ConcentricCircles(selector, options);
   var model = new ConcentricData(data, viz.options);
   viz.model = model;
 
   viz.render();
   return viz;
-};
-
-module.exports = d3.concentricCircles;
+}

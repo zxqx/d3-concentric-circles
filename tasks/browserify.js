@@ -10,7 +10,6 @@ module.exports = function(grunt) {
 
   var pkg           = grunt.file.readJSON('package.json');
   var appEntryPoint = pkg.main;
-  var vendorLibs    = ['d3'];
   var transform     = ['hbsfy'];
 
   return {
@@ -19,17 +18,16 @@ module.exports = function(grunt) {
       dest: jsReleasePath,
       options: {
         browserifyOptions: {
-          standalone: 'd3-concentric-circles'
+          standalone: 'concentricCircles',
         },
-        external: vendorLibs,
-        transform: transform,
+        transform: transform
       }
     },
-    releaseVendor: {
-      src: [],
-      dest: jsVendorReleasePath,
+    example: {
+      src: './public/main.js',
+      dest: './example/main.js',
       options: {
-        require: vendorLibs
+        transform: transform
       }
     }
   };
