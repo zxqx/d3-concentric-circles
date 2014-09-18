@@ -10,11 +10,11 @@ module.exports = function(grunt) {
 
   // Load task configs
   grunt.initConfig({
-    clean      : require('./tasks/clean.js')(grunt),
-    browserify : require('./tasks/browserify.js')(grunt),
-    copy       : require('./tasks/copy.js')(grunt),
-    jshint     : require('./tasks/jshint.js')(grunt),
-    watch      : require('./tasks/watch.js')(grunt)
+    clean       : require('./tasks/clean.js')(grunt),
+    browserify  : require('./tasks/browserify.js')(grunt),
+    copy        : require('./tasks/copy.js')(grunt),
+    jshint      : require('./tasks/jshint.js')(grunt),
+    watch       : require('./tasks/watch.js')(grunt)
   });
 
   // Release
@@ -24,10 +24,8 @@ module.exports = function(grunt) {
   ]);
 
   grunt.registerTask('build:example', [
-    'clean',
-    'browserify:release',
-    'browserify:releaseVendor',
     'copy',
+    'browserify:example',
     'jshint'
   ]);
 
