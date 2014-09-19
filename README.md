@@ -10,7 +10,7 @@ Requires NodeJS/npm:
 $ npm install git+ssh://git@bitbucket.org:W2ODigital/sbp_d3_concentric_circles.git
 ```
 
-Generate a standalone UMD module at `dist/d3-concentric-circles.js` (for use with `script` tags or AMD module loaders like RequireJS):
+If needed, you can generate a standalone UMD module at `dist/d3-concentric-circles.js` (for use with `script` tags or AMD module loaders like RequireJS):
 
 ```
 $ npm run build
