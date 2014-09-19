@@ -4,17 +4,10 @@ A concentric circles visualization plugin using the D3 library.
 
 ## Installation
 
-via npm (soon):
+Requires NodeJS/npm:
 
 ```
-$ npm install d3-concentric-circles
-```
-
-or Bitbucket:
-
-```
-$ git clone git@bitbucket.org:zangelle/sbp_d3_concentric_circles.git
-$ npm install
+$ npm install git+ssh://git@bitbucket.org:W2ODigital/sbp_d3_concentric_circles.git
 ```
 
 Generate a standalone UMD module at `dist/d3-concentric-circles.js` (for use with `script` tags or AMD module loaders like RequireJS):
