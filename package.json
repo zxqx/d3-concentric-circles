@@ -15,7 +15,11 @@
     "circles",
     "visualization"
   ],
-  "author": "W2O Digital",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/zakangelle/d3-concentric-circles.git"
+  },
+  "author": "Zak Angelle",
   "dependencies": {
     "clone": "^0.1.18",
     "d3": "^3.4.11",
