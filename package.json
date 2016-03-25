@@ -1,6 +1,6 @@
 {
   "name": "d3-concentric-circles",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "A concentric circles visualization plugin using the D3 library.",
   "main": "index.js",
   "scripts": {
