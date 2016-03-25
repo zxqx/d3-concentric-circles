@@ -2,24 +2,20 @@
 
 A concentric circles visualization plugin using the D3 library.
 
+## Requirements
+
++ NodeJS
+
 ## Installation
 
-Requires NodeJS/npm:
-
 ```
-$ npm install git+ssh://git@bitbucket.org:W2ODigital/sbp_d3_concentric_circles.git
+$ npm install d3-concentric-circles
 ```
 
 If needed, you can generate a standalone UMD module at `dist/d3-concentric-circles.js` (for use with `script` tags or AMD module loaders like RequireJS):
 
 ```
 $ npm run build
-```
-
-Generate an example at `example/index.html`:
-
-```
-$ npm run example
 ```
 
 ## Usage
@@ -48,6 +44,14 @@ Add CSS stylesheet located at `style/d3-concentric-circles.css`:
 
 ```html
 <link href="path/to/your/stylesheets/d3-concentric-circles.css" rel="stylesheet">
+```
+
+## Example
+
+Generate an example at `example/index.html`:
+
+```
+$ npm run example
 ```
 
 ## Options
@@ -84,7 +88,7 @@ d3ConcentricCircles('.container', data, {
 
 ## Methods
 
-### viz.render()
+### render()
 Re-render the visualization; useful if bound data or container size has changed.
 
 ```js
@@ -98,6 +102,7 @@ viz.render();
 ```
 
 ## Test
+
 Run tests via tape:
 
 ```
