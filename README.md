@@ -8,13 +8,13 @@ A concentric circles visualization plugin using the D3 library.
 
 ## Installation
 
-```
+```sh
 $ npm install d3-concentric-circles
 ```
 
 If needed, you can generate a standalone UMD module at `dist/d3-concentric-circles.js` (for use with `script` tags or AMD module loaders like RequireJS):
 
-```
+```sh
 $ npm run build
 ```
 
@@ -22,22 +22,10 @@ $ npm run build
 
 ### d3ConcentricCircles(selector, data, options=)
 
-with browserify:
-
 ```js
-var d3ConcentricCircles = require('d3-concentric-circles');
+import d3ConcentricCircles from require('d3-concentric-circles');
 
 d3ConcentricCircles('.container', data);
-```
-
-with RequireJS:
-
-```js
-define(function(require) {
-  var d3ConcentricCircles = require('d3-concentric-circles');
-
-  d3ConcentricCircles('.container', data);
-});
 ```
 
 Add CSS stylesheet located at `style/d3-concentric-circles.css`:
@@ -50,7 +38,7 @@ Add CSS stylesheet located at `style/d3-concentric-circles.css`:
 
 Generate an example at `example/index.html`:
 
-```
+```sh
 $ npm run example
 ```
 
@@ -76,13 +64,11 @@ A callback function to be fired when a circle is clicked. Receives an `event` ar
 Using options:
 ```js
 d3ConcentricCircles('.container', data, {
-  valueField : 'value',
-  labelField : 'display',
-  colors     : ['#08534c', '#28825f', '#fc8f32', '#dc4f00', '#f60202'],
-  legend     : true;
-  onClick    : function(e) {
-    console.log(e);
-  }
+  valueField: 'value',
+  labelField: 'display',
+  colors: ['#08534c', '#28825f', '#fc8f32', '#dc4f00', '#f60202'],
+  legend: true,
+  onClick: e => console.log(e)
 });
 ```
 
