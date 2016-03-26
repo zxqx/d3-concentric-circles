@@ -25,7 +25,7 @@ $ npm run build
 ### d3ConcentricCircles(selector, data, options=)
 
 ```js
-import d3ConcentricCircles from require('d3-concentric-circles');
+import d3ConcentricCircles from 'd3-concentric-circles';
 
 d3ConcentricCircles('.container', data);
 ```
