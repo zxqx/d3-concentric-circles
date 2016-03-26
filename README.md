@@ -24,19 +24,7 @@ import d3ConcentricCircles from 'd3-concentric-circles';
 d3ConcentricCircles('.container', data);
 ```
 
-Add CSS stylesheet located at `style/d3-concentric-circles.css`:
-
-```html
-<link href="path/to/your/stylesheets/d3-concentric-circles.css" rel="stylesheet">
-```
-
-## Example
-
-Generate an example at `example/index.html`:
-
-```sh
-$ npm run example
-```
+Source the CSS stylesheet located at `style/d3-concentric-circles.css`.
 
 ## Options
 
@@ -81,6 +69,14 @@ var viz = d3ConcentricCircles('.container', data);
 viz.render();
 
 // viz re-rendered
+```
+
+## Example
+
+Generate an example at `example/index.html`:
+
+```sh
+$ npm run example
 ```
 
 ## Standalone
