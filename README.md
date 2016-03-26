@@ -2,7 +2,7 @@
 
 A concentric circles visualization plugin using the D3 library.
 
-<img src='https://www.dropbox.com/s/8mbouimb3pnez9t/d3-concentric-circles.png?dl=0'>
+<img src='https://www.dropbox.com/s/8mbouimb3pnez9t/d3-concentric-circles.png?raw=1'>
 
 ## Requirements
 
