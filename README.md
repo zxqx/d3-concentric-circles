@@ -14,12 +14,6 @@ A concentric circles visualization plugin using the D3 library.
 $ npm install d3-concentric-circles
 ```
 
-If needed, you can generate a standalone UMD module at `dist/d3-concentric-circles.js` (for use with `script` tags or AMD module loaders like RequireJS):
-
-```sh
-$ npm run build
-```
-
 ## Usage
 
 ### d3ConcentricCircles(selector, data, options=)
@@ -87,6 +81,14 @@ var viz = d3ConcentricCircles('.container', data);
 viz.render();
 
 // viz re-rendered
+```
+
+## Standalone
+
+If needed, you can generate a standalone UMD module at `dist/d3-concentric-circles.js` (for use with `script` tags or AMD module loaders like RequireJS):
+
+```sh
+$ npm run build
 ```
 
 ## Test
