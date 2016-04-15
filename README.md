@@ -2,9 +2,11 @@
 
 A concentric circles visualization plugin using the D3 library.
 
-<img src='https://www.dropbox.com/s/8mbouimb3pnez9t/d3-concentric-circles.png?raw=1' width='500px' />
+[![See Demo](https://img.shields.io/badge/see-demo-green.svg)](https://dl.dropboxusercontent.com/u/21334841/demos/d3-concentric-circles/index.html)
 
-[See demo](https://dl.dropboxusercontent.com/u/21334841/demos/d3-concentric-circles/index.html)
+<a href="https://dl.dropboxusercontent.com/u/21334841/demos/d3-concentric-circles/index.html">
+  <img src='https://www.dropbox.com/s/8mbouimb3pnez9t/d3-concentric-circles.png?raw=1' width='500px' />
+</a>
 
 ## Requirements
 
