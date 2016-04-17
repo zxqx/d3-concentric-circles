@@ -9,6 +9,7 @@ module.exports = function(config) {
     plugins: [
       'karma-mocha',
       'karma-browserify',
+      'karma-coverage',
       'karma-chrome-launcher'
     ],
 
@@ -30,14 +31,14 @@ module.exports = function(config) {
       })]
     },
 
-    reporters: ['progress'],
+    reporters: ['progress', 'coverage'],
 
-    //coverageReporter: {
-      //dir : 'coverage/',
-      //reporters: [
-        //{ type: 'lcovonly', subdir: 'lcov' }
-      //]
-    //},
+    coverageReporter: {
+      dir : 'coverage/',
+      reporters: [
+        { type: 'lcovonly', subdir: 'lcov' }
+      ]
+    },
 
     port: 9876,
 

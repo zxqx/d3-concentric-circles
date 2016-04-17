@@ -8,7 +8,8 @@
     "example": "grunt build:example",
     "test": "karma start test/karma.conf.js",
     "test:once": "karma start test/karma.conf.js --single-run",
-    "watch": "grunt watch"
+    "watch": "grunt watch",
+    "coverage": "cat test/coverage/lcov/lcov.info | coveralls"
   },
   "keywords": [
     "d3",
@@ -32,6 +33,7 @@
     "browserify": "^13.0.0",
     "browserify-istanbul": "^2.0.0",
     "chai": "^3.5.0",
+    "coveralls": "^2.11.9",
     "grunt": "^0.4.5",
     "grunt-browserify": "^3.0.1",
     "grunt-cli": "^0.1.13",
@@ -45,6 +47,7 @@
     "karma": "^0.13.22",
     "karma-browserify": "^5.0.3",
     "karma-chrome-launcher": "^0.2.3",
+    "karma-coverage": "^0.5.5",
     "karma-mocha": "^0.2.2",
     "load-grunt-tasks": "^0.6.0",
     "mocha": "^2.4.5",
