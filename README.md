@@ -85,15 +85,15 @@ $ npm run example
 
 ## Standalone
 
-If needed, you can generate a standalone UMD module at `dist/d3-concentric-circles.js` (for use with `script` tags or AMD module loaders like RequireJS):
+Generate a standalone build in `dist` (for use with `<script>` tags and AMD module loaders):
 
 ```sh
-$ npm run build
+$ npm run build:standalone
 ```
 
 ## Test
 
-Run tests via tape:
+Tests are done with [karma](https://karma-runner.github.io) and [chai](http://chaijs.com/) by running:
 
 ```
 $ npm test

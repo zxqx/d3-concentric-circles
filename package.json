@@ -4,7 +4,7 @@
   "description": "A concentric circles visualization plugin using the D3 library.",
   "main": "index.js",
   "scripts": {
-    "build": "grunt build:standalone",
+    "build:standalone": "grunt build:standalone",
     "example": "grunt build:example",
     "test": "karma start test/karma.conf.js",
     "test:once": "karma start test/karma.conf.js --single-run",
