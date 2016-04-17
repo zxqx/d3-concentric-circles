@@ -43,7 +43,6 @@
     "grunt-contrib-watch": "^0.6.1",
     "hbsfy": "^2.1.0",
     "is-function": "^1.0.1",
-    "istanbul": "^0.4.3",
     "karma": "^0.13.22",
     "karma-browserify": "^5.0.3",
     "karma-chrome-launcher": "^0.2.3",

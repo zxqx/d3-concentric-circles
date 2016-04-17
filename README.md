@@ -98,3 +98,7 @@ Tests are done with [karma](https://karma-runner.github.io) and [chai](http://ch
 ```
 $ npm test
 ```
+
+## License
+
+MIT
