@@ -6,7 +6,8 @@
   "scripts": {
     "build": "grunt build:standalone",
     "example": "grunt build:example",
-    "test": "browserify -t hbsfy test/*.js | testling",
+    "test": "karma start test/karma.conf.js",
+    "test:once": "karma start test/karma.conf.js --single-run",
     "watch": "grunt watch"
   },
   "keywords": [
@@ -28,7 +29,9 @@
     "normalize-to-range": "^1.1.13"
   },
   "devDependencies": {
-    "browserify": "^5.11.2",
+    "browserify": "^13.0.0",
+    "browserify-istanbul": "^2.0.0",
+    "chai": "^3.5.0",
     "grunt": "^0.4.5",
     "grunt-browserify": "^3.0.1",
     "grunt-cli": "^0.1.13",
@@ -38,7 +41,13 @@
     "grunt-contrib-watch": "^0.6.1",
     "hbsfy": "^2.1.0",
     "is-function": "^1.0.1",
+    "istanbul": "^0.4.3",
+    "karma": "^0.13.22",
+    "karma-browserify": "^5.0.3",
+    "karma-chrome-launcher": "^0.2.3",
+    "karma-mocha": "^0.2.2",
     "load-grunt-tasks": "^0.6.0",
+    "mocha": "^2.4.5",
     "phantomjs": "^1.9.8",
     "tape": "^3.0.0",
     "testling": "^1.7.0"

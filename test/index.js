@@ -1,44 +1,23 @@
-var test                = require('tape');
-var isFunction          = require('is-function');
-var d3                  = require('d3');
-var D3ConcentricCircles = require('../index.js');
+const expect = require('chai').expect;
+const d3 = require('d3');
+const d3ConcentricCircles = require('../index.js');
 
-test('basics', function(t) {
-  t.plan(4);
+var container;
+
+describe('basics', () => {
+  before(() => {
+    container = document.createElement('div');
+    container.classList.add('container');
+    document.body.appendChild(container);
+  });
+
+  after(() => {
+    document.body.removeChild(container);
+  });
 
   var data = [
     { label: 'Label', value: 100 },
     { label: 'Label 2', value: 132 },
-  ];
-
-  var container = document.createElement('div');
-  container.classList.add('container');
-  document.body.appendChild(container);
-
-  t.ok(isFunction(d3.concentricCircles),
-    'extends d3 with method');
-
-  t.throws(function(t) {
-    d3.concentricCircles(null, data);
-  }, 'should throw when `selector` is not provided');
-
-  t.throws(function(t) {
-    d3.concentricCircles('.container');
-  }, 'should throw when `data` is not provided');
-
-  t.throws(function(t) {
-    d3.concentricCircles('body');
-  }, 'should throw if container element is not empty');
-
-  document.body.removeChild(container);
-});
-
-test('options', function(t) {
-  t.plan(1);
-
-  var data = [
-    { lab: 'Label', val: 100 },
-    { lab: 'Label 2', val: 132 }
   ];
 
   var options = {
@@ -51,14 +30,20 @@ test('options', function(t) {
     }
   };
 
-  var container = document.createElement('div');
-  container.classList.add('container');
-  document.body.appendChild(container);
+  it('should throw when selector is not provided', () => {
+    expect(() => d3ConcentricCircles(null, data)).to.throw(Error);
+  });
 
-  var cc = d3.concentricCircles('.container', data, options);
+  it('should throw when data is not provided', () => {
+    expect(() => d3ConcentricCircles('body')).to.throw(Error);
+  });
 
-  t.deepEquals(options, cc.options,
-    'should merge runtime options with defaults');
+  it('should throw if container element is not empty', () => {
+    expect(() => d3ConcentricCircles('body')).to.throw(Error);
+  });
 
-  document.body.removeChild(container);
+  it('should merge runtime options with defaults', () => {
+    var cc = d3ConcentricCircles('.container', data, options);
+    expect(options).to.eql(cc.options);
+  });
 });
