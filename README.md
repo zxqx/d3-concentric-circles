@@ -93,7 +93,7 @@ $ npm run build:standalone
 
 ## Test
 
-Tests are done with [karma](https://karma-runner.github.io) and [chai](http://chaijs.com/) by running:
+Run tests with [karma](https://karma-runner.github.io) and [mocha](https://mochajs.org/):
 
 ```
 $ npm test
