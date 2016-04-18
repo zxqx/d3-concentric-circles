@@ -6,8 +6,8 @@
   "scripts": {
     "build:standalone": "grunt build:standalone",
     "example": "grunt build:example",
-    "test": "karma start test/karma.conf.js",
-    "test:once": "karma start test/karma.conf.js --single-run",
+    "test": "karma start test/karma.conf.js --single-run",
+    "test:watch": "karma start test/karma.conf.js",
     "watch": "grunt watch",
     "coverage": "cat test/coverage/lcov/lcov.info | coveralls"
   },
