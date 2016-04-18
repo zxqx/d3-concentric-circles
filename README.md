@@ -2,7 +2,7 @@
 
 A concentric circles visualization plugin for the D3 library.
 
-[![Circle CI](https://circleci.com/gh/zakangelle/d3-concentric-circles/tree/master.svg?style=shield)](https://circleci.com/gh/zakangelle/d3-concentric-circles/tree/master) [![Coverage Status](https://img.shields.io/coveralls/zakangelle/d3-concentric-circles.svg)](https://coveralls.io/github/zakangelle/d3-concentric-circles?branch=master) [![See Demo](https://img.shields.io/badge/see-demo-dc4f00.svg)](https://dl.dropboxusercontent.com/u/21334841/demos/d3-concentric-circles/index.html)
+[![Circle CI](https://circleci.com/gh/zakangelle/d3-concentric-circles/tree/master.svg?style=shield)](https://circleci.com/gh/zakangelle/d3-concentric-circles/tree/master) [![Coverage Status](https://img.shields.io/coveralls/zakangelle/d3-concentric-circles.svg)](https://coveralls.io/github/zakangelle/d3-concentric-circles?branch=master) [![See Demo](https://img.shields.io/badge/see-demo-28825f.svg)](https://dl.dropboxusercontent.com/u/21334841/demos/d3-concentric-circles/index.html)
 
 <a href="https://dl.dropboxusercontent.com/u/21334841/demos/d3-concentric-circles/index.html">
   <img src='https://www.dropbox.com/s/8mbouimb3pnez9t/d3-concentric-circles.png?raw=1' width='500px' />
