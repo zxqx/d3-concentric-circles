@@ -32,26 +32,15 @@ Source the CSS stylesheet located at `style/d3-concentric-circles.css`.
 
 ## Options
 
-| option        | type      | default   |
-| ------------- | --------- | --------- |
-| `valueField`  | string    | `'value'` |
-
 Pass an optional `options` hash to override plugin defaults:
 
-### options.valueField `string` (default: `'value'`)
-The `value` field used to determine the radii of each circle.
-
-### options.labelField `string` (default: `'label'`)
-The `label` field used for the legend label.
-
-### options.colors `array`
-A list of colors to be used for the circles.
-
-### options.legend `boolean` (default: `true`)
-Turn the legend on/off.
-
-### options.onClick `function(event)`
-A callback function to be fired when a circle is clicked. Receives an `event` argument containing the data for that circle.
+| option        | type      | default   | description                                                   |
+|---------------|-----------|-----------|---------------------------------------------------------------|
+| `valueField`  | string    | `'value'` | The `value` field used to determine the radii of each circle. |
+| `labelField`  | string    | `'label'` | The `label` field used for the legend label.                  |
+| `colors`      | array     |           | A list of colors to be used for the circles.                  |
+| `legend`      | boolean   | `true`    | Turn the legend on/off.                                       |
+| `onClick`     | function  |           | A callback function to be fired when a circle is clicked. Receives an `event` argument containing the data for that circle.                                                 |
 
 Using options:
 ```js
