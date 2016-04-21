@@ -26,7 +26,7 @@ Source the CSS stylesheet located at `style/d3-concentric-circles.css`.
 
 ## Options
 
-Pass an optional `options` hash to override plugin defaults.
+Pass an `options` hash to override plugin defaults.
 
 | option        | type      | default   | description                                                   |
 |---------------|-----------|-----------|---------------------------------------------------------------|
@@ -64,7 +64,7 @@ viz.render();
 
 ## Example
 
-Generate an example at `example/index.html`:
+Generate an example in `example`:
 
 ```sh
 $ npm run example
