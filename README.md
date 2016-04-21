@@ -32,6 +32,10 @@ Source the CSS stylesheet located at `style/d3-concentric-circles.css`.
 
 ## Options
 
+| option        | type      | default   |
+| ------------- | --------- | --------- |
+| `valueField`  | string    | `'value'` |
+
 Pass an optional `options` hash to override plugin defaults:
 
 ### options.valueField `string` (default: `'value'`)
