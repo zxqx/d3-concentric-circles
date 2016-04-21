@@ -20,8 +20,6 @@ $ npm install d3-concentric-circles
 
 ## Usage
 
-### d3ConcentricCircles(selector, data, options=)
-
 ```js
 import d3ConcentricCircles from 'd3-concentric-circles';
 
@@ -32,7 +30,7 @@ Source the CSS stylesheet located at `style/d3-concentric-circles.css`.
 
 ## Options
 
-Pass an optional `options` hash to override plugin defaults:
+Pass an optional `options` hash to override plugin defaults.
 
 | option        | type      | default   | description                                                   |
 |---------------|-----------|-----------|---------------------------------------------------------------|
