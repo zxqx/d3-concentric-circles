@@ -9,9 +9,7 @@ module.exports = function(grunt) {
       dest: './example/'
     },
     style: {
-      expand: true,
-      cwd: './style',
-      src: '**',
+      src: './lib/d3-concentric-circles.css',
       dest: './dist/'
     }
   };

@@ -22,7 +22,7 @@ import d3ConcentricCircles from 'd3-concentric-circles';
 d3ConcentricCircles('.container', data);
 ```
 
-Source the CSS stylesheet located at `style/d3-concentric-circles.css`.
+Source the CSS stylesheet located at `lib/d3-concentric-circles.css`.
 
 ## Options
 
