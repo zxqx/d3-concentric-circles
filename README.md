@@ -64,7 +64,7 @@ viz.render();
 
 ## Example
 
-Generate an example in `example`:
+Generate an example in `example/dist`:
 
 ```sh
 $ npm run example

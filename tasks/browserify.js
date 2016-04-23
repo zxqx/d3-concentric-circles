@@ -24,8 +24,8 @@ module.exports = function(grunt) {
       }
     },
     example: {
-      src: './public/main.js',
-      dest: './example/main.js',
+      src: './example/main.js',
+      dest: './example/dist/main.js',
       options: {
         transform: transform
       }

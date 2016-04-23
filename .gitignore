@@ -4,8 +4,5 @@ node_modules
 # output
 dist
 
-# example
-example
-
 # code coverage
 coverage

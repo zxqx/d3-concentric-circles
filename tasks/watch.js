@@ -5,7 +5,7 @@ module.exports = function(grunt) {
       tasks: ['jshint', 'browserify:release']
     },
     static: {
-      files: ['public/**/*'],
+      files: ['example/**/*'],
       tasks: ['copy']
     },
     options: {
