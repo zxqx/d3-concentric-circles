@@ -20,11 +20,11 @@ $ npm install d3-concentric-circles
 import d3ConcentricCircles from 'd3-concentric-circles';
 
 const data = [
-  { display: 'Other', value: 77 },
-  { display: 'Apps', value: 158 },
-  { display: 'OS', value: 92 },
-  { display: 'Hardware', value: 80 },
-  { display: 'Network', value: 194 }
+  { label: 'Other', value: 77 },
+  { label: 'Apps', value: 158 },
+  { label: 'OS', value: 92 },
+  { label: 'Hardware', value: 80 },
+  { label: 'Network', value: 194 }
 ];
 
 d3ConcentricCircles('.container', data);
