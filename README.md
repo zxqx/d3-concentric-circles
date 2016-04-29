@@ -19,7 +19,7 @@ $ npm install d3-concentric-circles
 ```js
 import d3ConcentricCircles from 'd3-concentric-circles';
 
-const data = [
+let data = [
   { label: 'Other', value: 77 },
   { label: 'Apps', value: 158 },
   { label: 'OS', value: 92 },
